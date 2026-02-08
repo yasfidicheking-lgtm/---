@@ -1,0 +1,68 @@
+const quizData = [
+    {
+        question: "ما هو الشهر الذي نصوم فيه المسلمون؟",
+        options: ["رمضان", "شوال", "ذو الحجة", "محرم"],
+        answer: 0
+    },
+    {
+        question: "كم عدد ركعات صلاة الفجر؟",
+        options: ["2", "4", "3", "1"],
+        answer: 0
+    },
+    {
+        question: "ما هو وجب على المسلمين أثناء رمضان؟",
+        options: ["الصيام", "السباحة", "السفر", "الرياضة"],
+        answer: 0
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById('question');
+const optionsEl = document.getElementById('options');
+const nextBtn = document.getElementById('nextBtn');
+const scoreEl = document.getElementById('score');
+
+function loadQuestion() {
+    const q = quizData[currentQuestion];
+    questionEl.textContent = q.question;
+    optionsEl.innerHTML = '';
+    q.options.forEach((opt, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.classList.add('option');
+        btn.onclick = () => selectAnswer(index);
+        optionsEl.appendChild(btn);
+    });
+}
+
+function selectAnswer(index) {
+    const correct = quizData[currentQuestion].answer;
+    if (index === correct) {
+        score++;
+        scoreEl.textContent = "النقاط: " + score;
+        alert("إجابة صحيحة! ✅");
+    } else {
+        alert("إجابة خاطئة ❌");
+    }
+    nextQuestion();
+}
+
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    } else {
+        alert("انتهت المسابقة! نقاطك: " + score);
+        currentQuestion = 0;
+        score = 0;
+        scoreEl.textContent = "النقاط: 0";
+        loadQuestion();
+    }
+}
+
+// بداية
+loadQuestion();
+
+nextBtn.onclick = nextQuestion;
