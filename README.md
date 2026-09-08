@@ -1,24 +1,102 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مسابقة رمضان</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>مسابقة رمضان 🌙</h1>
-        <p id="score">النقاط: 0</p>
+# محقق المخدرات | Drug Cases Investigation Game
 
-        <div id="quiz">
-            <h2 id="question"></h2>
-            <div id="options"></div>
-        </div>
+موقع تفاعلي احترافي لحل قضايا جنائية خيالية متعلقة بالمخدرات.
 
-        <button id="nextBtn">التالي</button>
-    </div>
+## المميزات
 
-    <script src="script.js"></script>
-</body>
-</html>
+- **4 مستويات صعوبة**: سهل، متوسط، صعب، خبير
+- كل مستوى يدعم **+150 قضية** (حالياً عينات عالية الجودة، والبنية جاهزة للتوسع)
+- نظام أسئلة أثناء التحقيق (كاميرات، شهود، سجلات، مختبر، هاتف)
+- تقييم مرن للحل النهائي
+- حفظ التقدم محلياً (localStorage)
+- تصميم داكن احترافي + دعم كامل للعربية (RTL)
+- جاهز لـ **GitHub Pages**
+
+## التشغيل المحلي
+
+افتح `index.html` مباشرة في المتصفح، أو استخدم خادماً بسيطاً:
+
+```bash
+# باستخدام Python
+python -m http.server 8000
+
+# أو باستخدام Node
+npx serve .
+```
+
+ثم افتح `http://localhost:8000`
+
+## النشر على GitHub Pages
+
+1. أنشئ مستودعاً جديداً على GitHub
+2. ارفع كل الملفات
+3. اذهب إلى **Settings → Pages**
+4. اختر Branch: `main` و Folder: `/ (root)`
+5. انتظر دقيقة وافتح الرابط الذي سيظهر
+
+## إضافة قضايا جديدة (حتى 150+ في كل مستوى)
+
+افتح الملف المناسب في مجلد `data/`:
+
+- `data/easy.json`
+- `data/medium.json`
+- `data/hard.json`
+- `data/expert.json`
+
+أضف كائناً جديداً بنفس الهيكل:
+
+```json
+{
+  "id": "e009",
+  "title": "عنوان القضية",
+  "summary": "ملخص قصير يظهر في القائمة",
+  "description": "النص الكامل للقضية...",
+  "questions": {
+    "camera": "إجابة الكاميرات...",
+    "witness": "إجابة الشاهد...",
+    "records": "إجابة السجلات...",
+    "lab": "إجابة المختبر...",
+    "phone": "إجابة الهاتف..."
+  },
+  "solution": {
+    "culprit": "اسم الجاني",
+    "method": "كيف تمت الجريمة",
+    "motive": "الدافع"
+  },
+  "hints": ["تلميح 1", "تلميح 2"]
+}
+```
+
+**ملاحظات مهمة:**
+- كل القضايا يجب أن تكون **خيالية 100%**
+- لا تكتب أي تفاصيل تقنية عن تصنيع أو تهريب حقيقي
+- ركز على التحقيق المنطقي والأدلة والشخصيات
+
+## الهيكل
+
+```
+drug-cases-game/
+├── index.html
+├── css/style.css
+├── js/
+│   ├── data-loader.js
+│   └── app.js
+├── data/
+│   ├── easy.json
+│   ├── medium.json
+│   ├── hard.json
+│   └── expert.json
+└── README.md
+```
+
+## التطوير المستقبلي المقترح
+
+- إضافة نظام نقاط ورتب
+- وضع تحدي زمني
+- تصدير/استيراد التقدم
+- وضع متعدد اللاعبين بسيط
+- لوحة تحكم لإضافة القضايا من المتصفح
+
+---
+
+صُمم ليكون جاهزاً للتوسع والاستخدام الفوري على GitHub Pages.
