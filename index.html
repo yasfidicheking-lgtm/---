@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محقق المخدرات | تحقيقات جنائية تفاعلية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- الشاشة الرئيسية -->
+    <section id="home-screen" class="screen active">
+      <div class="hero">
+        <div class="badge">نسخة 1.0 • GitHub Ready</div>
+        <h1>محقق المخدرات</h1>
+        <p class="subtitle">أكثر من 150 قضية جنائية في كل مستوى صعوبة. حقق، اسأل، وحل.</p>
+        <div class="stats-bar">
+          <div class="stat">
+            <span class="stat-num" id="solved-count">0</span>
+            <span class="stat-label">قضية محلولة</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" id="total-cases">0</span>
+            <span class="stat-label">إجمالي القضايا</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="levels-grid">
+        <button class="level-card" data-level="easy">
+          <div class="level-icon">●</div>
+          <h2>سهل</h2>
+          <p>أدلة واضحة • تسلسل منطقي بسيط</p>
+          <span class="case-count" id="count-easy">— قضية</span>
+        </button>
+        <button class="level-card" data-level="medium">
+          <div class="level-icon">●●</div>
+          <h2>متوسط</h2>
+          <p>أدلة متضاربة • عدة مشتبهين</p>
+          <span class="case-count" id="count-medium">— قضية</span>
+        </button>
+        <button class="level-card" data-level="hard">
+          <div class="level-icon">●●●</div>
+          <h2>صعب</h2>
+          <p>خداع متعمد • أدلة مخفية</p>
+          <span class="case-count" id="count-hard">— قضية</span>
+        </button>
+        <button class="level-card" data-level="expert">
+          <div class="level-icon">●●●●</div>
+          <h2>خبير</h2>
+          <p>شبكات معقدة • أدلة متناقضة</p>
+          <span class="case-count" id="count-expert">— قضية</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- شاشة قائمة القضايا -->
+    <section id="cases-screen" class="screen">
+      <header class="top-bar">
+        <button class="btn-back" id="back-to-home">← الرجوع</button>
+        <h2 id="level-title">المستوى</h2>
+        <button class="btn-secondary" id="random-case">قضية عشوائية</button>
+      </header>
+      <div class="cases-list" id="cases-list"></div>
+    </section>
+
+    <!-- شاشة التحقيق -->
+    <section id="investigation-screen" class="screen">
+      <header class="top-bar">
+        <button class="btn-back" id="back-to-cases">← القضايا</button>
+        <h2 id="case-title">القضية</h2>
+        <span class="difficulty-badge" id="case-diff"></span>
+      </header>
+
+      <div class="investigation-layout">
+        <div class="case-briefing">
+          <h3>ملخص القضية</h3>
+          <div id="case-description" class="briefing-text"></div>
+          
+          <div class="asked-questions" id="asked-questions">
+            <h4>التفاصيل التي طلبتها</h4>
+            <ul id="questions-log"></ul>
+          </div>
+        </div>
+
+        <div class="actions-panel">
+          <h3>اطلب تفصيلاً دقيقاً</h3>
+          <div class="question-buttons" id="question-buttons"></div>
+
+          <div class="solution-box">
+            <h3>قدّم حلك النهائي</h3>
+            <label>من هو الجاني؟</label>
+            <input type="text" id="answer-culprit" placeholder="اسم الجاني...">
+            
+
+... 
