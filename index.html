@@ -3,97 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محقق المخدرات | تحقيقات جنائية تفاعلية</title>
+  <title>مركز البحث الجنائي | تعلم التحقيق وحل القضايا</title>
+  <meta name="description" content="موقع تعليمي يشرح علم الجريمة، طرق التحقيق الجنائي، تقنيات الاستجواب، وقسم تفاعلي لحل القضايا الخيالية.">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="app">
-    <!-- الشاشة الرئيسية -->
-    <section id="home-screen" class="screen active">
-      <div class="hero">
-        <div class="badge">نسخة 1.0 • GitHub Ready</div>
-        <h1>محقق المخدرات</h1>
-        <p class="subtitle">أكثر من 150 قضية جنائية في كل مستوى صعوبة. حقق، اسأل، وحل.</p>
-        <div class="stats-bar">
-          <div class="stat">
-            <span class="stat-num" id="solved-count">0</span>
-            <span class="stat-label">قضية محلولة</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num" id="total-cases">0</span>
-            <span class="stat-label">إجمالي القضايا</span>
-          </div>
-        </div>
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">🔍</div>
+        <span>مركز البحث الجنائي</span>
+      </a>
+      <button class="menu-toggle" aria-label="القائمة">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">الرئيسية</a></li>
+          <li><a href="criminology.html">علم الجريمة</a></li>
+          <li><a href="investigation.html">طرق التحقيق</a></li>
+          <li><a href="interrogation.html">فن الاستجواب</a></li>
+          <li><a href="cases.html">حل القضايا</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>تعلّم <span>فن التحقيق</span><br>وحل القضايا الجنائية</h1>
+      <p>موقع تعليمي يشرح علم الجريمة، أساليب جمع الأدلة، تقنيات الاستجواب القانونية، ويوفر قضايا خيالية تفاعلية تختبر مهاراتك التحليلية.</p>
+      <div>
+        <a href="cases.html" class="btn btn-primary">ابدأ حل قضية</a>
+        <a href="criminology.html" class="btn btn-secondary">اكتشف علم الجريمة</a>
       </div>
+    </div>
+  </section>
 
-      <div class="levels-grid">
-        <button class="level-card" data-level="easy">
-          <div class="level-icon">●</div>
-          <h2>سهل</h2>
-          <p>أدلة واضحة • تسلسل منطقي بسيط</p>
-          <span class="case-count" id="count-easy">— قضية</span>
-        </button>
-        <button class="level-card" data-level="medium">
-          <div class="level-icon">●●</div>
-          <h2>متوسط</h2>
-          <p>أدلة متضاربة • عدة مشتبهين</p>
-          <span class="case-count" id="count-medium">— قضية</span>
-        </button>
-        <button class="level-card" data-level="hard">
-          <div class="level-icon">●●●</div>
-          <h2>صعب</h2>
-          <p>خداع متعمد • أدلة مخفية</p>
-          <span class="case-count" id="count-hard">— قضية</span>
-        </button>
-        <button class="level-card" data-level="expert">
-          <div class="level-icon">●●●●</div>
-          <h2>خبير</h2>
-          <p>شبكات معقدة • أدلة متناقضة</p>
-          <span class="case-count" id="count-expert">— قضية</span>
-        </button>
-      </div>
-    </section>
+  <section>
+    <div class="container">
+      <h2 class="section-title">ماذا ستتعلم هنا؟</h2>
+      <p class="section-subtitle">محتوى تعليمي منظم يغطي أساسيات البحث الجنائي بطريقة واضحة وعملية.</p>
 
-    <!-- شاشة قائمة القضايا -->
-    <section id="cases-screen" class="screen">
-      <header class="top-bar">
-        <button class="btn-back" id="back-to-home">← الرجوع</button>
-        <h2 id="level-title">المستوى</h2>
-        <button class="btn-secondary" id="random-case">قضية عشوائية</button>
-      </header>
-      <div class="cases-list" id="cases-list"></div>
-    </section>
-
-    <!-- شاشة التحقيق -->
-    <section id="investigation-screen" class="screen">
-      <header class="top-bar">
-        <button class="btn-back" id="back-to-cases">← القضايا</button>
-        <h2 id="case-title">القضية</h2>
-        <span class="difficulty-badge" id="case-diff"></span>
-      </header>
-
-      <div class="investigation-layout">
-        <div class="case-briefing">
-          <h3>ملخص القضية</h3>
-          <div id="case-description" class="briefing-text"></div>
-          
-          <div class="asked-questions" id="asked-questions">
-            <h4>التفاصيل التي طلبتها</h4>
-            <ul id="questions-log"></ul>
-          </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3>علم الجريمة</h3>
+          <p>تعرّف على تعريف الجريمة، أنواعها، النظريات المفسرة لها، والفرق بين الجريمة والانحراف.</p>
+          <a href="criminology.html">اقرأ المزيد ←</a>
         </div>
 
-        <div class="actions-panel">
-          <h3>اطلب تفصيلاً دقيقاً</h3>
-          <div class="question-buttons" id="question-buttons"></div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <h3>طرق التحقيق</h3>
+          <p>كيف يُدار مسرح الجريمة؟ كيف تُجمع الأدلة؟ ما هي خطوات التحقيق المنهجي من البلاغ حتى الإحالة؟</p>
+          <a href="investigation.html">اقرأ المزيد ←</a>
+        </div>
 
-          <div class="solution-box">
-            <h3>قدّم حلك النهائي</h3>
-            <label>من هو الجاني؟</label>
-            <input type="text" id="answer-culprit" placeholder="اسم الجاني...">
-            
+        <div class="card">
+          <div class="card-icon">🗣️</div>
+          <h3>فن الاستجواب</h3>
+          <p>تقنيات الاستجواب القانونية، قراءة لغة الجسد، بناء الثقة، وتجنب الأخطاء الشائعة والضغط غير المشروع.</p>
+          <a href="interrogation.html">اقرأ المزيد ←</a>
+        </div>
 
-... 
+        <div class="card">
+          <div class="card-icon">🕵️</div>
+          <h3>حل القضايا</h3>
+          <p>قضايا خيالية تفاعلية مع أدلة وشهادات. حاول أن تجد الجاني بنفسك ثم اكتشف الحل المفسر.</p>
+          <a href="cases.html">جرّب الآن ←</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title">لماذا هذا الموقع؟</h2>
+      <p class="section-subtitle">نهدف إلى تقديم معرفة تعليمية محترمة حول البحث الجنائي دون تشجيع أي سلوك غير قانوني.</p>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <strong>محتوى تعليمي</strong>
+          شروحات واضحة مبنية على مبادئ التحقيق المعروفة عالمياً، مع التركيز على الجانب الأخلاقي والقانوني.
+        </div>
+        <div class="info-item">
+          <strong>تفاعلي وعملي</strong>
+          قسم «حل القضايا» يتيح لك تطبيق ما تعلمته على سيناريوهات خيالية محفزة للتفكير النقدي.
+        </div>
+        <div class="info-item">
+          <strong>مناسب للجميع</strong>
+          سواء كنت طالباً، هاوياً لقصص الجرائم، أو مهتماً بفهم كيف يعمل التحقيق الجنائي.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container text-center">
+      <h2 class="section-title">جاهز تختبر قدراتك؟</h2>
+      <p class="section-subtitle">ادخل إلى قسم حل القضايا وابدأ بأولى القضايا المتاحة.</p>
+      <a href="cases.html" class="btn btn-primary">الذهاب إلى حل القضايا</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 مركز البحث الجنائي — موقع تعليمي</p>
+      <p class="disclaimer">
+        هذا الموقع مخصص للأغراض التعليمية فقط. جميع القضايا المعروضة خيالية. 
+        لا يشجع الموقع أي نشاط غير قانوني، ويؤكد على أهمية احترام القانون والحقوق الأساسية أثناء أي تحقيق.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
